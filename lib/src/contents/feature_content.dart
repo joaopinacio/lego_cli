@@ -15,14 +15,10 @@ class Feature {
   String get _projectPath => 'package:$_projectName/src/features/$_snakeCase';
   String get _basePath => 'lib/src/features/$_snakeCase';
 
-  String get dataSourceFilePath =>
-      '$_basePath/data/data_sources/${_snakeCase}_datasource.dart';
-  String get repositoryFilePath =>
-      '$_basePath/data/repositories/${_snakeCase}_repository.dart';
-  String get abstractRepositoryFilePath =>
-      '$_basePath/domain/repositories/${_snakeCase}_repository_impl.dart';
-  String get exceptionFilePath =>
-      '$_basePath/domain/exceptions/${_snakeCase}_expcetions.dart';
+  String get dataSourceFilePath => '$_basePath/data/data_sources/${_snakeCase}_datasource.dart';
+  String get repositoryFilePath => '$_basePath/data/repositories/${_snakeCase}_repository_impl.dart';
+  String get abstractRepositoryFilePath => '$_basePath/domain/repositories/${_snakeCase}_repository.dart';
+  String get exceptionFilePath => '$_basePath/domain/exceptions/${_snakeCase}_expcetions.dart';
 
   String get dataSourceContent => '''
 abstract class ${_camelCase}Datasource {
