@@ -37,9 +37,10 @@ class ${_camelCase}DatasourceImpl implements ${_camelCase}Datasource {
 ''';
 
   String get repositoryContent => '''
+import 'package:dartz/dartz.dart';
+
 import '$_projectPath/domain/repositories/${_snakeCase}_repository.dart';
 import '$_projectPath/domain/exceptions/${_snakeCase}_expcetions.dart';
-import 'package:dartz/dartz.dart';
 
 class ${_camelCase}RepositoryImpl implements ${_camelCase}Repository {
   @override
@@ -51,8 +52,9 @@ class ${_camelCase}RepositoryImpl implements ${_camelCase}Repository {
 ''';
 
   String get abstractRepositoryContent => '''
-import '$_projectPath/domain/exceptions/${_snakeCase}_expcetions.dart';
 import 'package:dartz/dartz.dart';
+
+import '$_projectPath/domain/exceptions/${_snakeCase}_expcetions.dart';
 
 abstract class ${_camelCase}Repository {
   Future<Either<${_camelCase}Exception, dynamic>> fetch();
