@@ -56,6 +56,21 @@ class CreateCommand extends Command<int> {
       File(component.exceptionFilePath)
         ..createSync(recursive: true)
         ..writeAsStringSync(component.exceptionContent);
+      File(component.moduleFilePath)
+        ..createSync(recursive: true)
+        ..writeAsStringSync(component.moduleContent);
+      File(component.pagesFilePath)
+        ..createSync(recursive: true)
+        ..writeAsStringSync(component.pagesContent);
+      File(component.routesFilePath)
+        ..createSync(recursive: true)
+        ..writeAsStringSync(component.routesContent);
+      File(component.pageFilePath)
+        ..createSync(recursive: true)
+        ..writeAsStringSync(component.pageContent);
+      File(component.controllerFilePath)
+        ..createSync(recursive: true)
+        ..writeAsStringSync(component.controllerContent);
     } catch (e) {
       _logger.err('Error creating feature: $e');
       return ExitCode.usage.code;
