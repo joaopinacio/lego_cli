@@ -52,7 +52,7 @@ class ${_camelCase}DatasourceImpl implements ${_camelCase}Datasource {
 ''';
 
   String get repositoryContent => '''
-import 'package:dartz/dartz.dart';
+import 'package:fpdart/fpdart.dart';
 
 import '$_projectPath/domain/repositories/${_snakeCase}_repository.dart';
 import '$_projectPath/domain/exceptions/${_snakeCase}_expcetions.dart';
@@ -67,7 +67,7 @@ class ${_camelCase}RepositoryImpl implements ${_camelCase}Repository {
 ''';
 
   String get abstractRepositoryContent => '''
-import 'package:dartz/dartz.dart';
+import 'package:fpdart/fpdart.dart';
 
 import '$_projectPath/domain/exceptions/${_snakeCase}_expcetions.dart';
 
