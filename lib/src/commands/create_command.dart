@@ -44,6 +44,9 @@ class CreateCommand extends Command<int> {
     );
 
     try {
+      File(component.mainFilePath)
+        ..createSync(recursive: true)
+        ..writeAsStringSync(component.mainContent);
       File(component.dataSourceFilePath)
         ..createSync(recursive: true)
         ..writeAsStringSync(component.dataSourceContent);

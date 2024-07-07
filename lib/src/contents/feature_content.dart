@@ -16,6 +16,7 @@ class Feature {
   String get _projectPath => '$_projectMain/src/features/$_snakeCase';
   String get _basePath => 'lib/src/features/$_snakeCase';
 
+  String get mainFilePath => '$_basePath/$_snakeCase.dart';
   String get dataSourceFilePath =>
       '$_basePath/data/data_sources/${_snakeCase}_datasource.dart';
   String get repositoryFilePath =>
@@ -34,6 +35,13 @@ class Feature {
       '$_basePath/presentation/pages/${_snakeCase}_page.dart';
   String get controllerFilePath =>
       '$_basePath/presentation/controller/${_snakeCase}_controller.dart';
+
+  String get mainContent => '''
+export '$_projectPath/presentation/controller/${_snakeCase}_controller.dart';
+export '$_projectPath/presentation/module/${_snakeCase}_pages.dart';
+export '$_projectPath/presentation/module/${_snakeCase}_routes.dart';
+export '$_projectPath/presentation/pages/${_snakeCase}_page.dart';
+''';
 
   String get dataSourceContent => '''
 abstract class ${_camelCase}Datasource {
@@ -101,9 +109,7 @@ extension ${_camelCase}When on ${_camelCase}Exception {
   String get moduleContent => '''
 import 'package:flutter_modular/flutter_modular.dart';
 import '$_projectMain/src/core/binds/core_bindings.dart';
-import '$_projectPath/presentation/controller/${_snakeCase}_controller.dart';
-import '$_projectPath/presentation/module/${_snakeCase}_pages.dart';
-import '$_projectPath/presentation/pages/${_snakeCase}_page.dart';
+import '$_projectPath/$_snakeCase.dart';
 
 class ${_camelCase}Module extends Module {
   @override
