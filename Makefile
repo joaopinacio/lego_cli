@@ -9,4 +9,5 @@ install:
 	@dart format .
 	@dart compile exe bin/lego.dart -o bin/lego
 	@dart pub global activate --source path $(ROOT_DIR)
+	@dart run build_runner build --delete-conflicting-outputs
 	@echo "$(CYAN)Done!$(COLOR_OFF)"

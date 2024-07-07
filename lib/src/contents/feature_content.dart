@@ -86,7 +86,7 @@ class ${_camelCase}ExceptionGeneric extends ${_camelCase}Exception {
   const ${_camelCase}ExceptionGeneric({super.message});
 }
 
-extension When on ${_camelCase}Exception {
+extension ${_camelCase}When on ${_camelCase}Exception {
   T when<T>({
     required T Function() generic,
   }) {

@@ -31,9 +31,11 @@ class UpdateCommand extends Command<int> {
   @override
   Future<int> run() async {
     final updateCheckProgress = _logger.progress('Checking for updates');
-    late final String latestVersion;
+    late String latestVersion;
     try {
       latestVersion = await _pubUpdater.getLatestVersion(packageName);
+
+      if (latestVersion == '0.0.0') latestVersion = packageVersion;
     } catch (error) {
       updateCheckProgress.fail();
       _logger.err('$error');

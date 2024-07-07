@@ -128,7 +128,9 @@ class LegoCommandRunner extends CompletionCommandRunner<int> {
   /// user.
   Future<void> _checkForUpdates() async {
     try {
-      final latestVersion = await _pubUpdater.getLatestVersion(packageName);
+      var latestVersion = await _pubUpdater.getLatestVersion(packageName);
+      if (latestVersion == '0.0.0') latestVersion = packageVersion;
+
       final isUpToDate = packageVersion == latestVersion;
       if (!isUpToDate) {
         _logger
@@ -137,6 +139,13 @@ class LegoCommandRunner extends CompletionCommandRunner<int> {
             '''
 ${lightYellow.wrap('Update available!')} ${lightCyan.wrap(packageVersion)} \u2192 ${lightCyan.wrap(latestVersion)}
 Run ${lightCyan.wrap('$executableName update')} to update''',
+          );
+      } else {
+        _logger
+          ..info('')
+          ..info(
+            '''
+${lightGreen.wrap('Up to date!')} \u2192 ${lightCyan.wrap(packageVersion)}''',
           );
       }
     } catch (_) {}
