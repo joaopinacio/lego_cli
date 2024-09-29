@@ -17,24 +17,15 @@ class Feature {
   String get _basePath => 'lib/src/features/$_snakeCase';
 
   String get mainFilePath => '$_basePath/$_snakeCase.dart';
-  String get dataSourceFilePath =>
-      '$_basePath/data/data_sources/${_snakeCase}_datasource.dart';
-  String get repositoryFilePath =>
-      '$_basePath/data/repositories/${_snakeCase}_repository_impl.dart';
-  String get abstractRepositoryFilePath =>
-      '$_basePath/domain/repositories/${_snakeCase}_repository.dart';
-  String get exceptionFilePath =>
-      '$_basePath/domain/exceptions/${_snakeCase}_expcetions.dart';
-  String get moduleFilePath =>
-      '$_basePath/presentation/module/${_snakeCase}_module.dart';
-  String get pagesFilePath =>
-      '$_basePath/presentation/module/${_snakeCase}_pages.dart';
-  String get routesFilePath =>
-      '$_basePath/presentation/module/${_snakeCase}_routes.dart';
-  String get pageFilePath =>
-      '$_basePath/presentation/pages/${_snakeCase}_page.dart';
-  String get controllerFilePath =>
-      '$_basePath/presentation/controller/${_snakeCase}_controller.dart';
+  String get dataSourceFilePath => '$_basePath/data/data_sources/${_snakeCase}_datasource.dart';
+  String get repositoryFilePath => '$_basePath/data/repositories/${_snakeCase}_repository_impl.dart';
+  String get abstractRepositoryFilePath => '$_basePath/domain/repositories/${_snakeCase}_repository.dart';
+  String get exceptionFilePath => '$_basePath/domain/exceptions/${_snakeCase}_expcetions.dart';
+  String get moduleFilePath => '$_basePath/presentation/module/${_snakeCase}_module.dart';
+  String get pagesFilePath => '$_basePath/presentation/module/${_snakeCase}_pages.dart';
+  String get routesFilePath => '$_basePath/presentation/module/${_snakeCase}_routes.dart';
+  String get pageFilePath => '$_basePath/presentation/pages/${_snakeCase}_page.dart';
+  String get controllerFilePath => '$_basePath/presentation/controller/${_snakeCase}_controller.dart';
 
   String get mainContent => '''
 export '$_projectPath/presentation/controller/${_snakeCase}_controller.dart';
@@ -95,13 +86,12 @@ class ${_camelCase}ExceptionGeneric extends ${_camelCase}Exception {
 }
 
 extension ${_camelCase}When on ${_camelCase}Exception {
-  T when<T>({
+  T? when<T>({
     required T Function() generic,
   }) {
-    if (this is ${_camelCase}ExceptionGeneric) {
-      return generic.call();
-    }
-    throw Exception('Unknown exception: \$this');
+    return switch (this) {
+      ${_camelCase}ExceptionGeneric _ => generic.call(),
+    };
   }
 }
 ''';
